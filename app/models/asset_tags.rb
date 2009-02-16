@@ -23,7 +23,7 @@ module AssetTags
     *Usage:* 
     <pre><code><r:assets:each [limit="5"]>...</r:assets:each></code></pre>
   }    
-  tag 'assets:each' do |tag|
+  tag 'assets:each' do |tag|    
     options = tag.attr.dup
     result = []
     limit = options['limit'] ? options.delete('limit') : nil
@@ -34,6 +34,16 @@ module AssetTags
       result << tag.expand
     end
     result
+    # 
+    # options = tag.attr.dup
+    # result = []
+    # limit = options['limit'] ? options.delete('limit') : nil    
+    # assets = Asset.find_attachments_by_page(tag.locals.page)      
+    # assets.each do |asset|
+    #   tag.locals.asset = asset
+    #   result << tag.expand
+    # end
+    # result   
   end
   
   desc %{

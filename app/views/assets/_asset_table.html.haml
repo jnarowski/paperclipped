@@ -3,6 +3,7 @@
     %tr
       %th.asset Image
       %th.asset-title Title
+      %th.page_id Page
       %th.content_type Type
       %th.modify{ :colspan =>"2"} Modify
 
@@ -18,6 +19,8 @@
             &nbsp;
             %span.caption
               = asset.caption
+          %td.page_id
+            = asset.page.title if asset.page
           %td.content_type
             = asset.asset_content_type
           %td.add-to-bucket

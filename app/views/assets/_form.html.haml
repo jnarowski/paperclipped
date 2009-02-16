@@ -8,8 +8,15 @@
         %label{ :for => "asset_caption" } Caption
       %td.field
         = form.text_field :caption, :class => 'textbox', :maxlength => 255 
-%p
+%p  
   %small
     %a{ :id => "more-extended-metadata", :href => "#", :onclick => "#{toggle_javascript_for('extended-metadata')}; return false;" } More
-    %a{ :id => "less-extended-metadata", :href => "#", :onclick => "#{toggle_javascript_for('extended-metadata')}; return false;", :style => "display: none" } Less
+    %a{ :id => "less-extended-metadata", :href => "#", :onclick => "#{toggle_javascript_for('extended-metadata')}; return false;", :style => "display: none" } Less    
 
+%p.title
+  %label{ :for => "asset_keywords" } Keywords 
+  = form.text_field :keywords, :class => 'textbox', :maxlength => 100    
+  
+%p.title
+  %label{ :for => "asset_page_id", :style => 'margin-top: 15px;' } Page (Optional)     
+  = select_tag "page", options_for_select(pages_for_select, @asset.page_id), :style => 'margin-bottom: 15px;'     

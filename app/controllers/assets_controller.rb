@@ -13,8 +13,8 @@ class AssetsController < ApplicationController
         end
       }
     end
-    after :create do
-      if params[:page]
+    after :create do  
+      unless params[:page].blank?
         @page = Page.find(params[:page])
         @asset.pages << @page
       end
@@ -38,7 +38,7 @@ class AssetsController < ApplicationController
     end
      
   end
-  
+    
   def regenerate_thumbnails
     if request.post? 
       unless params[:id]

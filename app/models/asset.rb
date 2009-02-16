@@ -13,8 +13,7 @@ class Asset < ActiveRecord::Base
     'asset_content_type NOT LIKE ? AND asset_content_type NOT LIKE ? AND asset_content_type NOT IN (?)',
     'audio%', 'video%', (extra_content_types[:movie] + extra_content_types[:audio] + image_content_types)]).freeze
   cattr_reader *%w(movie audio image other).collect! { |t| "#{t}_condition".to_sym }
-  
-  
+    
   class << self
     def image?(asset_content_type)
       image_content_types.include?(asset_content_type)
@@ -80,7 +79,7 @@ class Asset < ActiveRecord::Base
     
     
   before_save :assign_title
-  
+  belongs_to :page
   
   
   def thumbnail(size = nil)
